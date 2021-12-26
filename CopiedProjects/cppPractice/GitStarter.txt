@@ -1,0 +1,115 @@
+Okay, here's how to get this remote repository onto your device.
+
+
+But before you do that Buster, you'll have to set up an SSH connection with GitLab from your computer.
+
+
+
+
+SSH STUFF
+
+go to your gitlab profile
+click "add SSH key" on the bar on the lefthand  side of the screen
+put in a key if you already have one, 
+check to see with
+cat ~/.ssh/id_rsa.pub
+
+which outputs your public key to terminal.
+
+If you had one, copy and paste it to the open field on Gitlab, and name it something.
+
+If you don't have one, use the following to generate one,
+
+ssh-keygen -t rsa -C "youremail@gmail.com"
+
+Either enter a passphrase or press enter to leave it blank
+
+Now run the command from earlier
+
+cat ~/.ssh/id_rsa.pub
+
+Cool, now lets go ahead and configure some user information while we're here.
+
+Use the following commands
+
+git config --global user.name "YourUsername"
+
+git config --global user.email "youremail@gmail.com"
+
+Rad, now go ahead and clone the repository following the rest of the instructions below.
+
+END SSH STUFF
+
+
+
+First, make a directory in some familiar place where you want this repository. 
+You're going to want easy access and room to grow.
+
+Next, from this page that you have access to, go to the main page for MCMT and copy the ssh url to the clipboard.
+
+Now, run the code below in that folder location from earlier. 
+
+
+git clone [put url here, no brackets needed]
+
+
+You'll be greeted by some mumbojumbo about authenticty of the host and how it can't be verified.
+
+If you've made it this far, you should feel okay about our authenticity. 
+Type "yes" where it asks if you want to continue connecting.
+
+
+Cool, now you have a local version of the remote directory of MCMT. 
+This means you have a working copy of all the files from
+the remote repository. 
+
+
+Now that you have a working copy, make a branch to edit files on with the following command.
+
+
+git branch [name of branch, no brackets needed]
+
+
+To access this branch use the following command.
+
+
+git checkout [name of branch, no brackets needed]
+
+
+Now there are two (maybe three) layers of protection from editing errors.
+Do whatever you want to on this working branch. 
+
+Here are some useful git commands
+
+
+git add . (stages all files in directory, updating their status and allowing them to be saved)
+
+
+git commit -m "put your commit message" (makes a savestate or snapshot of the branch, leave off -m if you have a big comment to make)
+
+
+git status (see what files are and are not staged)
+
+
+git diff (see the differences between current files and previous commit)
+
+
+git checkout master (puts you back on the master branch)
+
+
+git push origin master (pushes changes made on your local copy to the remote repository, be careful with this one)
+
+
+git stash (saves current unstaged changes and hard resets branch, useful for saving something for later)
+
+
+git merge <branch to merge> (brings together the features/commits of two branches. 
+I use this to bring changes from a development branch to my master branch before pushing to remote repository)
+
+
+git branch -d <branch to delete> (deletes branch after the -d)
+
+
+I am still learning git and may be updating this in the future.
+
+

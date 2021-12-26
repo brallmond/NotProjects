@@ -1,0 +1,10 @@
+The adjacent directories were made over two years ago
+following exercises from a book beginner book.
+
+I can't say with certainty that any will run, and I'm
+not sure they'll really be of much interest anyways.
+
+TODO: follow up on those, and revisit the gitstarter
+turn it into a readme incase you're brain stops working
+and you have to learn git again from scratch
+
