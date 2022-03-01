@@ -1,12 +1,49 @@
 import calendar
+from datetime import date
 
-cal = calendar.Calendar(6)
-print("6 is Sunday")
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--bal', help='enter starting balance')
+parser.add_argument('--payday', help='enter numerical day of your next paycheck')
+parser.add_argument('--avgWeeklyExp', help='True/False include average weekly expenses', default=False)
+args = parser.parse_args()
+
+# options, add arg parse w defaults for paycheck
+balance = float(args.bal)
+paycheckAmt = 873.67
+paycheckDay = int(args.payday)
+addWeeklyExpenses = bool(args.avgWeeklyExp) # should be input variable
+
+paycheckFreq = "biweekly" #arg parse for monthly version as well
+
+# get today's date
+currentMonth = date.today().month
+currentDay = date.today().day
+
+# make list of months, days, and weekdays
+cal = calendar.Calendar(6) #tells cal that start of the week is Sunday
 fullCalendar = []
-for month in range(1,12+1):
+for month in range(currentMonth,12+1):
   for day, weekday in cal.itermonthdays2(2022, month):
     if day != 0:
-      fullCalendar.append((month,day,weekday))
+      if (month == currentMonth):
+        if (day >= currentDay):
+          fullCalendar.append((month,day,weekday))
+      if (month != currentMonth):
+        fullCalendar.append((month,day,weekday))
+
+# make list of paydays
+paydays = []
+dayCount = 0
+for month, day, weekday in fullCalendar:
+  if ((not (day == currentDay and month == currentMonth)) \
+     and ((day == paycheckDay and len(paydays) == 0) or dayCount == 14)):
+    paydays.append((month,day))
+    dayCount = 0
+  dayCount += 1
+
+print("paydays")
+print(paydays)
 
 # make list of static charges from csv
 import pandas
@@ -24,17 +61,11 @@ groceryWeeklyCost = 50
 restarauntWeeklyCost = 28
 coffeeWeeklyCost = 12
 
-# options, add arg parse w defaults for paycheck
-balance = 3000.
-paycheckAmt = 797.43
-paycheckDay = 7
-paycheckMonth = 1
-firstPayCheck = True
-addWeeklyExpenses = False
-
+print("projected costs")
+prevBalance = -1
 for month, day, weekday in fullCalendar:
 
-  if month > 5: break
+  if month > (currentMonth + 2): break
 
   # recurring charges
   for dayRC, chargeRC in recurringCharges:
@@ -42,15 +73,10 @@ for month, day, weekday in fullCalendar:
       balance += chargeRC  
 
   # paychecks
-  if ( (weekday == 4) and (not firstPayCheck) ):
-    fridayCount += 1
-    if (fridayCount == 2):
+  for monthPD, dayPD in paydays:
+    if (monthPD == month and dayPD == day):
       balance += paycheckAmt
-      fridayCount = 0
-  if ( (month == paycheckMonth) and (day == paycheckDay) and (firstPayCheck) ): # first paycheck of the year jan 7th
-    fridayCount = 0
-    firstPayCheck = False
-    balance += paycheckAmt
+
 
   # weekly predicted costs
   # grocery avg is 200 per month
@@ -69,5 +95,7 @@ for month, day, weekday in fullCalendar:
     if ( (monthOTE == month) and (dayOTE == day) ):
       balance += chargeOTE
 
-  # print output each day
-  print("{} {}: {:.2f}".format(month, day, balance))
+  # print output each day balance changes
+  if prevBalance != balance:
+    print("{} {}: {:.2f}".format(month, day, balance))
+  prevBalance = balance
