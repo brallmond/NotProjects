@@ -7,18 +7,19 @@ if __name__ == "__main__":
   #init conds
   x, y, z, ux, uy = 0.0, 0.0, 0.0, 0.0, 0.0
   uz = 1.0
-  ab = 0.5
-  sc = 0.5
+  ab = 0.01
+  sc = 1-ab
   w = 1.0
 
   tot = ab + sc
   
   #fig stuff
   plt.ion()
-  plt.xlim(-10, 10)
-  plt.ylim(-10, 10)
+  boxlim = 10
+  plt.xlim(-boxlim, boxlim)
+  plt.ylim(-boxlim, boxlim)
   xlist, ylist, zlist = [], [], []
-  while (w > 0.0001 and reps < 25):
+  while (w > 0.0001):#):#):#):#):#):#):#):#):# and reps < 25):
     xsi = rand.uniform(0.0, 1.0)
     s = -1.0*np.log(xsi)/tot
     fi = 2.0*3.14159*xsi
@@ -38,6 +39,17 @@ if __name__ == "__main__":
       uxp = (sinth*(ux*uz*cosfi-uy*sinfi)/sqrz) + ux*costh
       uyp = (sinth*(uy*uz*cosfi+ux*sinfi)/sqrz) + uy*costh
       uzp = -1.0*sqrz*sinth*cosfi + uz*costh
+
+    if (x > boxlim):
+      x = boxlim - (x-boxlim)
+    if (x < -boxlim):
+      x = -boxlim + (abs(x)-boxlim)
+
+    if (z > boxlim):
+      z = boxlim - (z-boxlim)
+    if (z < -boxlim):
+      z = -boxlim + (abs(z) - boxlim)
+
 
     ux = uxp
     uy = uyp
