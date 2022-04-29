@@ -55,5 +55,8 @@ if __name__ == "__main__":
     print(w)
     reps += 1
     plt.plot(xlist,zlist,'g-')
-    plt.draw()
+    plt.show()
     plt.pause(0.1)
+  if (w < 0.0001 or reps >= 25):
+    plt.ioff()
+    plt.show()

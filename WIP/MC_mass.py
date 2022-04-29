@@ -21,7 +21,7 @@ def gen(x, y, z, ux, uy, uz, s, th, fi):
 
   return x, y, z
 
-def shoot(x, y, z, ux, uy, uz, s, th, fi, w)
+#def shoot(x, y, z, ux, uy, uz, s, th, fi, w)
   
 def update(data):
   t, x, y = data
@@ -32,14 +32,14 @@ def update(data):
   head.set_data(x, y)
   return holder
 
-if __name__ == "__main__"
+if __name__ == "__main__":
   #init conds
   x = 0
   y = 0
   z = 0
   ux = 0
   uy = 0
-  uz = 1
+  uz = 0.95
 
   ab = 0.5
   sc = 0.5
@@ -49,7 +49,7 @@ if __name__ == "__main__"
   s = -1*np.log(xsi)/tot
   fi = 2*3.14159265359*xsi
   g = 0 #anisotropy
-  th = np.acos(1-2*xsi)
+  th = np.arccos(1-2*xsi)
   
   A = 1
   fig = plt.figure()
