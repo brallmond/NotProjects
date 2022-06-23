@@ -17,7 +17,11 @@ import imageio
 # saving a gif is different from interactively updating it, so there's a different script for it
 
 def move(xin, yin):
-  return xin-0.05, yin/1.05
+  for i in range(len(xin)):
+    if ((i > 100) and (i < 400)):
+      xin[i+1] += 1
+      xin[i-1] += 1
+  return xin, yin
 
 if __name__ == "__main__":
 
@@ -38,7 +42,7 @@ if __name__ == "__main__":
     x, y = move(x, y)
 
   # Stich image files together to make a gif
-  with imageio.get_writer('stars.gif', mode='I') as writer:
+  with imageio.get_writer('Gifs/stars.gif', mode='I') as writer:
       for filename in filenames:
           image = imageio.imread(filename)
           writer.append_data(image)
@@ -46,21 +50,5 @@ if __name__ == "__main__":
   for filename in set(filenames):
       os.remove(filename)
   
-#  #interactive
-#  plt.ion() # turn on interactive plotting
-#  # make plot, draw it, pause, clear from figure, update data, and restart loop
-#  for i in range(50):
-#    plt.hist2d(x, y, bins=100, range=[[-1,1],[-1,1]])
-#    plt.draw()
-#    plt.pause(0.00001)
-#    plt.clf()
-#    x, y = move(x, y) # move can be arbitrarily modified for interesting behaviors
-
-  # let plot persist (replot, turn off interactive plot, and show plot)
-  #plt.hist2d(x, y, bins=100, range=[[-1,1],[-1,1]])
-  #plt.ioff()
-  #plt.show()
-  #plt.savefig("temp.png")
-  #plt.close()
 
   

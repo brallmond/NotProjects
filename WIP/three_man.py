@@ -82,8 +82,17 @@ if __name__ == "__main__":
       player_turn = increase_player_turn(player_turn)
     
     rounds -= 1
-    print("##############")
-    print(die_one, die_two, die_sum)
-    print(player_array)
-    print("your turn! {}".format(player_turn))
-    print("##############")
+    printBuffer=[]
+    printBuffer.append("##############")
+    printBuffer.append(str(die_one))
+    printBuffer.append(str(die_two))
+    printBuffer.append(str(die_sum))
+    printBuffer.append(str(player_array))
+    printBuffer.append("your turn! " + str(player_turn))
+    printBuffer.append("##############")
+    print(printBuffer)
+    #print("##############")
+    #print(die_one, die_two, die_sum)
+    #print(player_array)
+    #print("your turn! {}".format(player_turn))
+    #print("##############")

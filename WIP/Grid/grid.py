@@ -14,13 +14,23 @@ import matplotlib.pyplot as plt
 # set it's more or less brainless
 
 def move(xin, yin):
-  return xin-0.05, yin/1.05
+#  for i in range(len(xin)):
+#    print(xin[1])
+#    xin[1] += 1
+#    yin[1] += 1
+#    if ((i > 100) and (i < 400)):
+#      xin[i+1] += 0.1
+#      xin[i-1] += 0.1
+#      yin[i+1] += 0.1
+#      yin[i-1] += 0.1
+  return xin/1.05, yin/1.05
+
 
 if __name__ == "__main__":
 
   # make plot interface and random data
   fig = plt.subplots(figsize =(6, 5))
-  n = 1000
+  n = 100
   x = np.random.uniform(-1, 1, size=n)  
   y = np.random.uniform(-1, 1, size=n)
   
@@ -34,7 +44,7 @@ if __name__ == "__main__":
     x, y = move(x, y) # move can be arbitrarily modified for interesting behaviors
 
   # let plot persist (replot, turn off interactive plot, and show plot)
-  plt.hist2d(x, y, bins=100, range=[[-1,1],[-1,1]])
+  plt.hist2d(x, y, bins=n, range=[[-1,1],[-1,1]])
   plt.ioff()
   plt.show()
 
