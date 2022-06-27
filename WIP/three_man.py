@@ -43,6 +43,18 @@ def updateBuffer(arrayOfStrings):
     bufferControl = '\x1b'+'['+str(arrayLength) +'A' +'\x1b[J'
     print(bufferControl, end="")
 
+def player_display(player_array, player_turn):
+    #print player drink counts with player turn colored in
+    outString = ""
+    for i in range(len(player_array)):
+      if i == player_turn:
+        outString += "\x1b[0;32m" + str(player_array[i]) + "\x1b[0;37m"
+      else:
+        outString += str(player_array[i])
+    
+    return outString
+
+
 if __name__ == "__main__":
   # initial setup. choose three man randomly and choose
   # who starts. Also initialize players to zero drinks
@@ -79,14 +91,14 @@ if __name__ == "__main__":
     if die_sum == 7:
       action = True
       player_array[player_drinks(player_turn, -1)] += 1
-      whodrinks = "left of threeman"
+      whodrinks = "left of player"
 
     # if the sum of the dice is eleven, the player right
     # of the three man drinks
     if die_sum == 11:
       action = True
       player_array[player_drinks(player_turn, 1)] += 1
-      whodrinks = "right of threeman"
+      whodrinks = "right of player"
 
     # no fun numbers were rolled, so next turn.
     # Since this is only incremented when nothing fun is rolled,
@@ -99,14 +111,14 @@ if __name__ == "__main__":
     rounds -= 1
     printBuffer=[]
     printBuffer.append("##############")
+    printBuffer.append("ROUND: " + str(rounds))
     printBuffer.append("threeman: " + str(three_man))
-    printBuffer.append("die one: " + str(die_one))
-    printBuffer.append("die two: " + str(die_two))
-    printBuffer.append("die sum: " + str(die_sum))
+    printBuffer.append("dice: " + str(die_one) + " + " + str(die_two) + " = " + str(die_sum))
     printBuffer.append("action: " + str(action))
     printBuffer.append(whodrinks + " drinks")
-    printBuffer.append("player drinks: " + str(player_array))
+    printBuffer.append("player drinks: " + player_display(player_array, player_turn))
     printBuffer.append("your turn! " + str(player_turn))
     printBuffer.append("##############")
+    
     updateBuffer(printBuffer)
 
