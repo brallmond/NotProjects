@@ -55,6 +55,7 @@ gridmax = np.max(zz) + 2
 
 # Make 3 subplots in a horizontal line
 fig, axes = plt.subplots(1, 3)
+fig.set_size_inches(10.5, 10.5)
 
 for i, ax in enumerate(axes.flat):
   # origin='lower' makes the output image cartesian instead of the default image format
@@ -82,9 +83,10 @@ for i, ax in enumerate(axes.flat):
   if (i != 0):
     ax.get_yaxis().set_visible(False)
 
+# Save a pdf of your plot
+plt.savefig('output.pdf')
 print("If it looks bad, try going full-screen")
 plt.show()
-
 
 
 
