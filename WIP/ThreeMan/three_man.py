@@ -128,7 +128,7 @@ if __name__ == "__main__":
   # initial setup. choose three man randomly and choose
   # who starts. Also initialize players to zero drinks
 
-  DataSetSize = 10
+  DataSetSize = 100
   array_of_arrays = []
   for i in range(DataSetSize):
     players = 8
@@ -148,9 +148,9 @@ if __name__ == "__main__":
 # write final results to file
 # if log file, append to it
 # if no log file, make it and write to it
-outputfile = open('output.txt', 'a')
+#outputfile = open('output.txt', 'a')
 # strip player array, i.e. transform it from an array into a string separated by commas (?)
-outputfile.write(str(player_array) + '\n')
+#outputfile.write(str(player_array) + '\n')
 
 outputFileName = 'players' + str(players) + 'rounds' + str(rounds) + 'OriginalRules.npy'
 np.save(outputFileName, array_of_arrays)
