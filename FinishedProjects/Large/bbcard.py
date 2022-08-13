@@ -174,7 +174,7 @@ def twofer(name = '', base_health = 0, base_damage = 0, base_speed = 0):
 
 def tourney():
     i = 0
-    while True:
+    while i < 3:
         print(i)
         i += 1
         twofer()

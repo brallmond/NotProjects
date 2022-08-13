@@ -5,6 +5,15 @@ the code initially. Lesson learned I suppose.
 
 Anyways
 
+bbcode.py
+execute like this
+python bbcard.py
+
+This was my first attempt at classes and writing a turn-based terminal
+auto-battler. It's a little jank, and honestly I did not do myself any favors
+commenting the code or making it readable. Keeping it so one day I can say 
+I learned something, but I don't intend to work on it again.
+
 Liss_SHO.py  
 execute like this
 python3 Liss_SHO.py
