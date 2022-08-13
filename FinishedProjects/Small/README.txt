@@ -41,6 +41,13 @@ execute like this
 Replaces terminal cursor with highlighted color that increases and decreases
 in intensity while moving from right to left. Takes 2 optional arguments for speed and repetition.
 
+listQuestion.py
+execute like this (works with python as well)
+python3 listQuestion.py 
+
+some example code that I was going to post in a stack-overflow question
+before I found the answer on stack-overflow
+
 mixSentence.py
 execute like this (not compatible with python3)
 python mixSentence.py
