@@ -1,6 +1,7 @@
 from random import randint
 from time import sleep
 import numpy as np
+import argparse
 
 # note that this version of threeman is different from what you'll find via google
 # https://eus.wiki/3_Man (top result)
@@ -48,7 +49,7 @@ def updateBuffer(arrayOfStrings):
     arrayLength = len(arrayOfStrings)
     for i in range(arrayLength):
       print(arrayOfStrings[i])
-    sleep(0.0001)
+    sleep(0.01)
     bufferControl = '\x1b'+'['+str(arrayLength) +'A' +'\x1b[J'
     print(bufferControl, end="")
 
@@ -128,31 +129,34 @@ if __name__ == "__main__":
   # initial setup. choose three man randomly and choose
   # who starts. Also initialize players to zero drinks
 
-  DataSetSize = 100
+  parser = argparse.ArgumentParser(description='Get input for game of three man')
+  parser.add_argument('players', action='store',
+                    help='the number of players')
+  parser.add_argument('rounds', action='store',
+                    help='the number of rounds')
+  parser.add_argument('DataSetSize', action='store',
+                    help='the number of datasets generated')
+  parser.add_argument('-i', '--interactiveTF', dest='interactiveDisplay', default=False,
+                    help='set flag for interactive output while data is generated')
+  args = parser.parse_args()
+
+  DataSetSize = int(args.DataSetSize)
+  players = int(args.players)
+  rounds = int(args.rounds)
+  interactiveDisplay = bool(args.interactiveDisplay)
+
   array_of_arrays = []
   for i in range(DataSetSize):
-    players = 8
 
     three_man = randint(0,players-1)
     player_array = [0 for i in range(players)]
     player_turn = randint(0,players-1)
 
-    rounds = 100
-    interactiveDisplay = False
-
     play_full_game(three_man, player_array, player_turn, players, rounds, interactiveDisplay)
     array_of_arrays.append(player_array)
 
-
-
-# write final results to file
-# if log file, append to it
-# if no log file, make it and write to it
-#outputfile = open('output.txt', 'a')
-# strip player array, i.e. transform it from an array into a string separated by commas (?)
-#outputfile.write(str(player_array) + '\n')
+# write final results to file as np array
 
 outputFileName = 'players' + str(players) + 'rounds' + str(rounds) + 'OriginalRules.npy'
 np.save(outputFileName, array_of_arrays)
-
 

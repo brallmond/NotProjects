@@ -1,36 +1,65 @@
 import numpy as np
 import sys
+import argparse
 import matplotlib.pyplot as plt
 
-inFile = sys.argv # all input arguments in an array
 
-output = np.load(str(inFile[1]))
+
+parser = argparse.ArgumentParser(description='Get input for game of three man')
+parser.add_argument('inFile', action='store',
+                    help='the file to summarize')
+parser.add_argument('-g', '--graphsTF', dest='graphsTF', default=True,
+                    help='turn graphs on/off')
+parser.add_argument('-p', '--printToTeminalTF', dest='printTerminalTF', default=False,
+                    help='print each round\'s stats to terminal')
+args = parser.parse_args()
+
+# load data file
+inFile = args.inFile
+output = np.load(str(inFile))
 output_size = len(output)
 
+# set flags
+EnableGraphs = args.graphsTF
+PrintPerRoundOutput = args.printTerminalTF
+
+# initialize containers
 maxes = np.empty((100,1))
 mins = np.empty((100,1))
 means = np.empty((100,1))
 variances = np.empty((100,1))
 
-#print("MAX" + '\t' + "MIN" + '\t' + "MEAN" + '\t' + "VAR")
+# fill containers for graphs, optionally print output per dataset
 for i in range(output_size):
   maxes[i] = np.max(output[i])
   mins[i] = np.min(output[i])
   means[i] = np.mean(output[i])
   variances[i] = np.var(output[i])
-  #print(maxes[i], mins[i], means[i], variances[i])
-  #print(str(np.max(output[i])) + '\t' + str(np.min(output[i])) + '\t' \
-  #    + str(np.mean(output[i])) + '\t' + str(np.var(output[i])))
+  if PrintPerRoundOutput:
+    print("MAX: {0:>4}, MIN: {1:>4}, AVG: {2:>5}, VAR: {3:>4}"\
+          .format(maxes[i][0], mins[i][0], means[i][0],variances[i][0]))
  
+# make and title container for graphs
 fig, axes = plt.subplots(2, 2)
+fig.suptitle("Data Summary from Three Man Games in File\n {}".format(inFile))
 
-
-fig.suptitle("Three Man")
-
+# below, n is the data, bins are the starting points of the histograms, patches is some figure thing
+axes[0][0].title.set_text("maxes")
 n, bins, patches = axes[0][0].hist(maxes, color='blue', ec='black', lw=1)
+
+axes[0][1].title.set_text("mins")
 n, bins, patches = axes[0][1].hist(mins, color='green', ec='black', lw=1)
+
+axes[1][0].title.set_text("averages")
 n, bins, patches = axes[1][0].hist(means, color='orange', ec='black', lw=1)
+
+axes[1][1].title.set_text("variances")
 n, bins, patches = axes[1][1].hist(variances, color='purple', ec='black', lw=1)
+
+# make subplot titles not overlap
+# https://www.geeksforgeeks.org/how-to-set-the-spacing-between-subplots-in-matplotlib-in-python/
+plt.subplots_adjust(left=0.1, bottom=0.1, right=0.9, top=0.85, \
+                    wspace=0.4, hspace=0.4)
 
 print("Max of Maxes: {}".format(np.max(maxes)))
 
