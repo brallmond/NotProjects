@@ -118,3 +118,5 @@ fi
 
 PS1="\e[0;36m$(~/.pick_text.sh) (\w)\e[0m \n"
 export PATH=/home/braden/LearningProgramming/MITShort/Lecture2:/home/braden/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+. ~/root/bin/thisroot.sh
