@@ -35,6 +35,17 @@ sudo apt install krb5-user
 # install non-headless java and ant for ConfDB
 sudo apt install ant, openjdk-11-jdk
 
+# install nordvpn and nordpass
+# download the deb package from online
+sudo apt-get install {/path/to/}nordvpn-release_1.0.0_all.deb
+sudo apt-get update
+sudo apt-get install nordvpn
+sudo usermod -aG nordvpn $USER
+restart 
+nordvpn login
+nordvpn connect
+sudo snap install nordpass
+
 # Not Work
 # install spotify
 curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add -
