@@ -28,6 +28,8 @@ sudo apt install ./Downloads/zoom_amd64.deb
 sudo apt-get install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
 libxft-dev libxext-dev libssl-dev
 # test with root -l 
+# install pyroot aswell
+sudo snap install root-framework
 
 # install kerberos
 sudo apt install krb5-user
@@ -52,4 +54,6 @@ curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt-get update && sudo apt-get install spotify-client
 # open Spotify and sign in
-
+# install discord
+sudo snap install discord
+# open and login
