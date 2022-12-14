@@ -1,0 +1,149 @@
+####FORMAT###
+"Name for button"
+sensor labels for humans : [1, 2, 3, etc]
+ CHIP ID of first sensoer from label array above, CHANNEL ID of same, associated MTRS card
+####END FORMAT####
+
+#### BEGIN GROUPINGS ####
+
+"Segment 1 Heaters"
+labels : [24, 15, 3, 4, 11, 2]
+ CHIP ID : 3,   CHANNEL_ID : 5, MTRS 33
+ CHIP ID : 2,   CHANNEL_ID : 2, MTRS 33
+ CHIP ID : 0,   CHANNEL_ID : 2, MTRS 34
+ CHIP ID : 0,   CHANNEL_ID : 3, MTRS 34
+ CHIP ID : 1,   CHANNEL_ID : 4, MTRS 33
+ CHIP ID : 0,   CHANNEL_ID : 1, MTRS 33
+
+"Segment 2 Heaters" 
+labels : [14, 17, 6, 5, 9, 7]
+ CHIP ID : 2,   CHANNEL_ID : 1, MTRS 33
+ CHIP ID : 2,   CHANNEL_ID : 4, MTRS 33
+ CHIP ID : 0,   CHANNEL_ID : 5, MTRS 34
+ CHIP ID : 0,   CHANNEL_ID : 4, MTRS 34
+ CHIP ID : 1,   CHANNEL_ID : 2, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 0, MTRS 33
+
+"Segment 3 Heaters"
+labels : [21, 10, 12, 11, 1, 3]
+ CHIP ID : 3,   CHANNEL_ID : 2, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 3, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 5, MTRS 34
+ CHIP ID : 1,   CHANNEL_ID : 4, MTRS 34
+ CHIP ID : 0,   CHANNEL_ID : 0, MTRS 33
+ CHIP ID : 0,   CHANNEL_ID : 2, MTRS 33
+
+"Segment 4 Heaters"
+labels : [22, 23, 7, 8, 12, 19]
+ CHIP ID : 3,   CHANNEL_ID : 3, MTRS 33
+ CHIP ID : 3,   CHANNEL_ID : 4, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 0, MTRS 34
+ CHIP ID : 1,   CHANNEL_ID : 1, MTRS 34
+ CHIP ID : 1,   CHANNEL_ID : 5, MTRS 33
+ CHIP ID : 3,   CHANNEL_ID : 0, MTRS 33
+
+"Segment 5 Heaters"
+labels : [20, 10, 5, 9, 8, 4]
+ CHIP ID : 3,   CHANNEL_ID : 1, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 3, MTRS 34
+ CHIP ID : 0,   CHANNEL_ID : 4, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 2, MTRS 34
+ CHIP ID : 1,   CHANNEL_ID : 1, MTRS 33
+ CHIP ID : 0,   CHANNEL_ID : 3, MTRS 33
+
+"Heaters Horizontal Row, Top"
+labels : [24, 14, 21, 22, 20]
+ CHIP ID : 3,   CHANNEL_ID : 5, MTRS 33
+ CHIP ID : 2,   CHANNEL_ID : 1, MTRS 33
+ CHIP ID : 3,   CHANNEL_ID : 2, MTRS 33
+ CHIP ID : 3,   CHANNEL_ID : 3, MTRS 33
+ CHIP ID : 3,   CHANNEL_ID : 1, MTRS 33
+
+"Heaters Horizontal Row, One After Top"
+labels : [15, 17, 10, 23, 10]
+ CHIP ID : 2,   CHANNEL_ID : 2, MTRS 33
+ CHIP ID : 2,   CHANNEL_ID : 4, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 3, MTRS 33
+ CHIP ID : 3,   CHANNEL_ID : 4, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 3, MTRS 34
+
+"Heaters Horizontal Row, Two After Top"
+labels : [3, 6, 12, 7, 5]
+ CHIP ID : 0,   CHANNEL_ID : 2, MTRS 34
+ CHIP ID : 0,   CHANNEL_ID : 5, MTRS 34
+ CHIP ID : 1,   CHANNEL_ID : 5, MTRS 34
+ CHIP ID : 1,   CHANNEL_ID : 0, MTRS 34
+ CHIP ID : 0,   CHANNEL_ID : 4, MTRS 33
+
+"Heaters Horizontal Row, Two Before Bottom"
+labels : [4, 5, 11, 8, 9]
+ CHIP ID : 0,   CHANNEL_ID : 3, MTRS 34
+ CHIP ID : 0,   CHANNEL_ID : 4, MTRS 34
+ CHIP ID : 1,   CHANNEL_ID : 4, MTRS 34
+ CHIP ID : 1,   CHANNEL_ID : 1, MTRS 34
+ CHIP ID : 1,   CHANNEL_ID : 2, MTRS 34
+
+"Heaters Horizontal Row, One Before Bottom"
+labels : [11, 9, 1, 12, 8]
+ CHIP ID : 1,   CHANNEL_ID : 4, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 2, MTRS 33
+ CHIP ID : 0,   CHANNEL_ID : 0, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 5, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 1, MTRS 33
+
+"Heaters Horizontal Row, Bottom"
+labels : [2, 7, 3, 19, 4]
+ CHIP ID : 0,   CHANNEL_ID : 1, MTRS 33
+ CHIP ID : 1,   CHANNEL_ID : 0, MTRS 33
+ CHIP ID : 0,   CHANNEL_ID : 2, MTRS 33
+ CHIP ID : 3,   CHANNEL_ID : 0, MTRS 33
+ CHIP ID : 0,   CHANNEL_ID : 3, MTRS 33
+
+"Segment Zero on Aluminum Only"
+labels : [15, 13, 14, 17, 18, 19]
+ CHIP ID : 2,   CHANNEL_ID : 2, MTRS 34
+ CHIP ID : 2,   CHANNEL_ID : 0, MTRS 34
+ CHIP ID : 2,   CHANNEL_ID : 1, MTRS 34
+ CHIP ID : 2,   CHANNEL_ID : 4, MTRS 34
+ CHIP ID : 2,   CHANNEL_ID : 5, MTRS 34
+ CHIP ID : 3,   CHANNEL_ID : 0, MTRS 34
+
+"Row Top Center on Aluminum Only"
+labels : [15, 17, 24, 22]
+ CHIP ID : 2,   CHANNEL_ID : 2, MTRS 34
+ CHIP ID : 2,   CHANNEL_ID : 4, MTRS 34
+ CHIP ID : 3,   CHANNEL_ID : 5, MTRS 34
+ CHIP ID : 3,   CHANNEL_ID : 3, MTRS 34
+
+"Row Bottom Center on Aluminum Only"
+labels : [14, 19, 6]
+ CHIP ID : 2,   CHANNEL_ID : 1, MTRS 34
+ CHIP ID : 3,   CHANNEL_ID : 0, MTRS 34
+ CHIP ID : 0,   CHANNEL_ID : 5, MTRS 33
+
+"Exposed CO2 Pipe, Underside of Tray"
+labels : [16, 21]
+ CHIP ID : 2,   CHANNEL_ID : 3, MTRS 34
+ CHIP ID : 3,   CHANNEL_ID : 2, MTRS 34
+
+"Compare Front and Back Corners"
+labels : [14, 2, 19, 20, 22, 21]
+ CHIP ID : 2,   CHANNEL_ID : 1, MTRS 34
+ CHIP ID : 0,   CHANNEL_ID : 1, MTRS 34
+ CHIP ID : 3,   CHANNEL_ID : 0, MTRS 34
+ CHIP ID : 3,   CHANNEL_ID : 1, MTRS 33
+ CHIP ID : 3,   CHANNEL_ID : 3, MTRS 34
+ CHIP ID : 3,   CHANNEL_ID : 2, MTRS 34
+
+"Back Corner Only"
+labels : [20, 21, 22]
+ CHIP ID : 3,   CHANNEL_ID : 1, MTRS 33
+ CHIP ID : 3,   CHANNEL_ID : 2, MTRS 34
+ CHIP ID : 3,   CHANNEL_ID : 3, MTRS 34
+
+"Ambient Temp Sensors"
+labels : [18, 13, 16]
+ CHIP ID : 2,   CHANNEL_ID : 5, MTRS 33
+ CHIP ID : 2,   CHANNEL_ID : 0, MTRS 33
+ CHIP ID : 2,   CHANNEL_ID : 3, MTRS 33
+
