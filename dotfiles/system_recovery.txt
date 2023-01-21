@@ -59,3 +59,13 @@ sudo apt-get update && sudo apt-get install spotify-client
 # install discord
 sudo snap install discord
 # open and login
+
+#For MAC!
+# download openVPN online
+# same for spotify and Zoom
+# download Xcode from the app store
+# download brew online
+# download root with the command
+brew install root
+
+
