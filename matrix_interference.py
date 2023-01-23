@@ -129,15 +129,51 @@ def print_all_letters(letters):
   plt.show()
 
 
+#def print_overlap(letter_1, letter_2, operation):
+def print_overlap(matrix_1, matrix_2, operation):
+
+  fig = plt.figure()
+  ax_1 = plt.subplot2grid((1, 3), (0, 0))
+  ax_2 = plt.subplot2grid((1, 3), (0, 1))
+  ax_output = plt.subplot2grid((1, 3), (0, 2))
+
+  #matrix_1 = matrix_alphabet[letter_1]
+  #matrix_2 = matrix_alphabet[letter_2]
+
+  ax_1.imshow(matrix_1)
+  ax_2.imshow(matrix_2)
+
+  if (operation == "+"):
+    matrix_output = matrix_1 + matrix_2
+
+  elif (operation == "-"):
+    matrix_output = matrix_1 - matrix_2
+
+  elif (operation == "*"):
+    matrix_output = matrix_1 * matrix_2
+
+  elif (operation == "|"):
+    matrix_output = matrix_1 | matrix_2
+
+  ax_output.imshow(matrix_output)
+
+  plt.show()
+
+  return matrix_output
+
+
 if __name__ == "__main__":
 
   # always add a border for aesthetic purposes
   add_border_to_alphabet()
 
   # see entire alphabet before and after an operation
-  print_all_letters(list(keystring))
-  square_alphabet()
-  print_all_letters(list(keystring))
+  #print_all_letters(list(keystring))
+  #square_alphabet()
+  #print_all_letters(list(keystring))
+
+  new_matrix = print_overlap(matrix_alphabet["A"], matrix_alphabet["B"], "|")
+  newer_matrix = print_overlap(new_matrix, matrix_alphabet["T"], "|")
 
 
 
