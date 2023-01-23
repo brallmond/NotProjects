@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 matrix_A = np.matrix('1 1 1 1 1; 1 0 0 0 1; 1 1 1 1 1; 1 0 0 0 1; 1 0 0 0 1')
 matrix_B = np.matrix('1 1 1 1 0; 1 0 0 0 1; 1 1 1 1 0; 1 0 0 0 1; 1 1 1 1 0')
 matrix_C = np.matrix('1 1 1 1 1; 1 0 0 0 0; 1 0 0 0 0; 1 0 0 0 0; 1 1 1 1 1')
@@ -28,6 +29,7 @@ matrix_X = np.matrix('1 0 0 0 1; 0 1 0 1 0; 0 0 1 0 0; 0 1 0 1 0; 1 0 0 0 1')
 matrix_Y = np.matrix('1 0 0 0 1; 0 1 0 1 0; 0 0 1 0 0; 0 0 1 0 0; 0 0 1 0 0')
 matrix_Z = np.matrix('1 1 1 1 1; 0 0 0 1 0; 0 0 1 0 0; 0 1 0 0 0; 1 1 1 1 1')
 
+
 matrix_alphabet = {"A" : matrix_A, "B" : matrix_B, "C" : matrix_C, "D" : matrix_D, 
                    "E" : matrix_E, "F" : matrix_F, "G" : matrix_G, "H" : matrix_H, 
                    "I" : matrix_I, "J" : matrix_J, "K" : matrix_K, "L" : matrix_L,
@@ -35,6 +37,9 @@ matrix_alphabet = {"A" : matrix_A, "B" : matrix_B, "C" : matrix_C, "D" : matrix_
                    "Q" : matrix_Q, "R" : matrix_R, "S" : matrix_S, "T" : matrix_T, 
                    "U" : matrix_U, "V" : matrix_V, "W" : matrix_W, "X" : matrix_X,
                    "Y" : matrix_Y, "Z" : matrix_Z}
+
+
+keystring = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 def add_border(matrix):
@@ -49,7 +54,6 @@ def add_border(matrix):
   return matrix
 
 
-keystring = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 def add_border_to_alphabet():
   for entry, letter in enumerate(keystring):
     matrix_alphabet[letter] = add_border(matrix_alphabet[letter])
@@ -124,8 +128,18 @@ def print_all_letters(letters):
 
   plt.show()
 
-# main?
-add_border_to_alphabet()
-#square_alphabet()
-print_all_letters(list(keystring))
+
+if __name__ == "__main__":
+
+  # always add a border for aesthetic purposes
+  add_border_to_alphabet()
+
+  # see entire alphabet before and after an operation
+  print_all_letters(list(keystring))
+  square_alphabet()
+  print_all_letters(list(keystring))
+
+
+
+
 
