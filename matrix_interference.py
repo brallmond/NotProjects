@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+from sys import exit
 
 matrix_A = np.matrix('1 1 1 1 1; 1 0 0 0 1; 1 1 1 1 1; 1 0 0 0 1; 1 0 0 0 1')
 matrix_B = np.matrix('1 1 1 1 0; 1 0 0 0 1; 1 1 1 1 0; 1 0 0 0 1; 1 1 1 1 0')
@@ -39,7 +39,7 @@ matrix_alphabet = {"A" : matrix_A, "B" : matrix_B, "C" : matrix_C, "D" : matrix_
                    "Y" : matrix_Y, "Z" : matrix_Z}
 
 
-keystring = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+KEYSTRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 def add_border(matrix):
@@ -55,13 +55,13 @@ def add_border(matrix):
 
 
 def add_border_to_alphabet():
-  for entry, letter in enumerate(keystring):
+  for entry, letter in enumerate(KEYSTRING):
     matrix_alphabet[letter] = add_border(matrix_alphabet[letter])
 
 
 # take every letter and multiply it by itself
 def square_alphabet():
-  for entry, letter in enumerate(keystring):
+  for entry, letter in enumerate(KEYSTRING):
     matrix_alphabet[letter] = matrix_alphabet[letter]*matrix_alphabet[letter]
 
 
@@ -129,19 +129,7 @@ def print_all_letters(letters):
   plt.show()
 
 
-#def print_overlap(letter_1, letter_2, operation):
-def print_overlap(matrix_1, matrix_2, operation):
-
-  fig = plt.figure()
-  ax_1 = plt.subplot2grid((1, 3), (0, 0))
-  ax_2 = plt.subplot2grid((1, 3), (0, 1))
-  ax_output = plt.subplot2grid((1, 3), (0, 2))
-
-  #matrix_1 = matrix_alphabet[letter_1]
-  #matrix_2 = matrix_alphabet[letter_2]
-
-  ax_1.imshow(matrix_1)
-  ax_2.imshow(matrix_2)
+def matrix_operation(matrix_1, matrix_2, operation, print_output=False):
 
   if (operation == "+"):
     matrix_output = matrix_1 + matrix_2
@@ -155,12 +143,43 @@ def print_overlap(matrix_1, matrix_2, operation):
   elif (operation == "|"):
     matrix_output = matrix_1 | matrix_2
 
-  ax_output.imshow(matrix_output)
+  elif (operation == "&"):
+    matrix_output = matrix_1 & matrix_2
 
-  plt.show()
+  else:
+    print(f"operation \"{operation}\" not understood or permitted. Exiting...")
+    exit()
+
+  if (print_output):
+    fig = plt.figure()
+    ax_1 = plt.subplot2grid((1, 3), (0, 0))
+    ax_2 = plt.subplot2grid((1, 3), (0, 1))
+    ax_output = plt.subplot2grid((1, 3), (0, 2))
+  
+    ax_1.imshow(matrix_1)
+    ax_2.imshow(matrix_2)
+    ax_output.imshow(matrix_output)
+  
+    plt.show()
 
   return matrix_output
 
+def print_matrix(matrix):
+  plt.imshow(matrix)
+  plt.show()
+
+
+def print_alphabet_operation(user_operation = ""):
+  operation = user_operation
+  output_matrix = matrix_operation(matrix_alphabet["A"], matrix_alphabet["B"], operation)
+  for entry, letter in enumerate(KEYSTRING):
+    if (letter in "AB"):
+      pass
+    else:
+      output_matrix = matrix_operation(output_matrix, matrix_alphabet[letter], operation)
+  
+  print_matrix(output_matrix)
+  
 
 if __name__ == "__main__":
 
@@ -168,12 +187,14 @@ if __name__ == "__main__":
   add_border_to_alphabet()
 
   # see entire alphabet before and after an operation
-  #print_all_letters(list(keystring))
+  #print_all_letters(list(KEYSTRING))
   #square_alphabet()
-  #print_all_letters(list(keystring))
+  #print_all_letters(list(KEYSTRING))
 
-  new_matrix = print_overlap(matrix_alphabet["A"], matrix_alphabet["B"], "|")
-  newer_matrix = print_overlap(new_matrix, matrix_alphabet["T"], "|")
+  #new_matrix = matrix_operation(matrix_alphabet["A"], matrix_alphabet["B"], "|")
+  #newer_matrix = matrix_operation(new_matrix, matrix_alphabet["T"], "|")
+
+  print_alphabet_operation()
 
 
 
