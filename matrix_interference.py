@@ -179,7 +179,45 @@ def print_alphabet_operation(user_operation = ""):
       output_matrix = matrix_operation(output_matrix, matrix_alphabet[letter], operation)
   
   print_matrix(output_matrix)
+  return output_matrix
   
+
+def square_and_show_terms(letter_1, letter_2, alpha = 1.0):
+
+  matrix_1 = matrix_alphabet[letter_1]
+  matrix_2 = alpha*matrix_alphabet[letter_2]
+
+  matrix_1_squared = matrix_operation(matrix_1, matrix_1, "*")
+  interference_term_1 = matrix_operation(matrix_1, matrix_2, "*")
+  interference_term_2 = matrix_operation(matrix_2, matrix_1, "*")
+  matrix_2_squared = matrix_operation(matrix_2, matrix_2, "*")
+
+  full_expression = matrix_1_squared + interference_term_1 + interference_term_2 + matrix_2_squared
+
+  list_of_expressions = [matrix_1, matrix_2, \
+                         matrix_1_squared, interference_term_1, \
+                         interference_term_2, matrix_2_squared, full_expression]
+
+  fig = plt.figure()
+  ax_m1 = plt.subplot2grid((2,4), (0,0))
+  ax_m2 = plt.subplot2grid((2,4), (0,1))
+  ax_mfinal = plt.subplot2grid((2,4), (0,3))
+
+  ax_m1sq = plt.subplot2grid((2,4), (1,0))
+  ax_m1m2 = plt.subplot2grid((2,4), (1,1))
+  ax_m2m1 = plt.subplot2grid((2,4), (1,2))
+  ax_m2sq = plt.subplot2grid((2,4), (1,3))
+
+  list_of_axes = [ax_m1, ax_m2, ax_mfinal, ax_m1sq, ax_m1m2, ax_m2m1, ax_m2sq]
+
+  for entry, ax in enumerate(list_of_axes):
+    turn_off_axes(ax)
+    ax.imshow(list_of_expressions[entry])
+
+  plt.show()
+
+
+
 
 if __name__ == "__main__":
 
@@ -194,9 +232,9 @@ if __name__ == "__main__":
   #new_matrix = matrix_operation(matrix_alphabet["A"], matrix_alphabet["B"], "|")
   #newer_matrix = matrix_operation(new_matrix, matrix_alphabet["T"], "|")
 
-  print_alphabet_operation()
+  #final_matrix = print_alphabet_operation("+")
+  #print_matrix(final_matrix*final_matrix)
 
-
-
+  square_and_show_terms("A","B", alpha=0.05)
 
 
