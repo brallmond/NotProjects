@@ -200,13 +200,20 @@ def square_and_show_terms(letter_1, letter_2, alpha = 1.0):
 
   fig = plt.figure()
   ax_m1 = plt.subplot2grid((2,4), (0,0))
+  ax_m1.set_title("M1")
   ax_m2 = plt.subplot2grid((2,4), (0,1))
+  ax_m2.set_title("M2")
   ax_mfinal = plt.subplot2grid((2,4), (0,3))
+  ax_mfinal.set_title("(M1 + alpha*M2)^2")
 
   ax_m1sq = plt.subplot2grid((2,4), (1,0))
+  ax_m1sq.set_title("M1 Squared", fontsize=8)
   ax_m1m2 = plt.subplot2grid((2,4), (1,1))
+  ax_m1m2.set_title("M1 M2 Interference", fontsize=8)
   ax_m2m1 = plt.subplot2grid((2,4), (1,2))
+  ax_m2m1.set_title("M2 M1 Interference", fontsize=8)
   ax_m2sq = plt.subplot2grid((2,4), (1,3))
+  ax_m2sq.set_title("M2 Squared", fontsize=8)
 
   list_of_axes = [ax_m1, ax_m2, ax_mfinal, ax_m1sq, ax_m1m2, ax_m2m1, ax_m2sq]
 
@@ -225,9 +232,9 @@ if __name__ == "__main__":
   add_border_to_alphabet()
 
   # see entire alphabet before and after an operation
-  #print_all_letters(list(KEYSTRING))
-  #square_alphabet()
-  #print_all_letters(list(KEYSTRING))
+  print_all_letters(list(KEYSTRING))
+  square_alphabet()
+  print_all_letters(list(KEYSTRING))
 
   #new_matrix = matrix_operation(matrix_alphabet["A"], matrix_alphabet["B"], "|")
   #newer_matrix = matrix_operation(new_matrix, matrix_alphabet["T"], "|")
@@ -235,6 +242,6 @@ if __name__ == "__main__":
   #final_matrix = print_alphabet_operation("+")
   #print_matrix(final_matrix*final_matrix)
 
-  square_and_show_terms("A","B", alpha=0.05)
+  #square_and_show_terms("A","B", alpha=0.005)
 
 
